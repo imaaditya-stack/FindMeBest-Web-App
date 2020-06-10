@@ -34,22 +34,26 @@ def price():
 
         search = request.form['inputsearch']
 
-        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
+#         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
 
         # Amazon
 
-        amazonresponse = requests.get("https://www.amazon.in/s?k="+search.lower(),headers=headers)
+#         amazonresponse = requests.get("https://www.amazon.in/s?k="+search.lower(),headers=headers)
 
-        amazoncontent = amazonresponse.content
+#         amazoncontent = amazonresponse.content
+        
+        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+
+        driver.get("https://www.amazon.in/s?k="+search.lower())
 
         #BeautifulSoup Object Initialization
-        amazonsoupobject = BeautifulSoup(amazoncontent,"html.parser")
+        amazonsoupobject = BeautifulSoup(driver.page_source,"html.parser")
 
         amazonproducts = amazonsoupobject.find_all("div",attrs={"class": "s-include-content-margin"})
 
-        if len(amazonproducts) < 1:
-            flash("Please enter a valid product","danger")
-            return redirect(url_for('home'))
+#         if len(amazonproducts) < 1:
+#             flash("Please enter a valid product","danger")
+#             return redirect(url_for('home'))
 
         amazondata = []
 
@@ -104,9 +108,9 @@ def price():
 
         flipkartproducts = flipkartsoupobject.find_all("div",attrs={"class": "_1UoZlX"})
 
-        if len(flipkartproducts) < 1:
-            flash("Please enter a valid product","danger")
-            return redirect(url_for('home'))
+#         if len(flipkartproducts) < 1:
+#             flash("Please enter a valid product","danger")
+#             return redirect(url_for('home'))
 
         flipkartdata = []
 
@@ -147,18 +151,21 @@ def price():
         #Snapdeal
 
 
-        snapdealresponse = requests.get("https://www.snapdeal.com/search?keyword="+search,headers=headers)
+#         snapdealresponse = requests.get("https://www.snapdeal.com/search?keyword="+search,headers=headers)
 
-        snapdealcontent = snapdealresponse.content
+#         snapdealcontent = snapdealresponse.content
+        
+        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
+        driver.get("https://www.snapdeal.com/search?keyword="+search.lower())
         #BeautifulSoup Object Initialization
-        snapdealsoupobject = BeautifulSoup(snapdealcontent,"html.parser")
+        snapdealsoupobject = BeautifulSoup(driver.page_source,"html.parser")
 
         snapdealproducts = snapdealsoupobject.find_all("div",attrs={"class": "product-tuple-listing"})
 
-        if len(snapdealproducts) < 1:
-            flash("Please enter a valid product","danger")
-            return redirect(url_for('home'))
+#         if len(snapdealproducts) < 1:
+#             flash("Please enter a valid product","danger")
+#             return redirect(url_for('home'))
 
         snapdealdata = []
 
