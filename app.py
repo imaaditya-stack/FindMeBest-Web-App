@@ -87,7 +87,7 @@ def price():
 
         # Flipkart
 
-        driver=webdriver.Chrome(ChromeDriverManager().install())
+        driver=webdriver.Chrome(executable_path="chromedriver.exe")
 
         driver.get("https://www.flipkart.com/search?q="+search)
 
