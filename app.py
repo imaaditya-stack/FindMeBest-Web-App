@@ -65,9 +65,11 @@ def price():
                 #Try block store the data
                 #If exception occurs it will store empty string
 
-                if search.lower() in amazonproducts[product].find("img",attrs={"class":"s-image"})['alt'].lower():
+#                 if search.lower() in amazonproducts[product].find("img",attrs={"class":"s-image"})['alt'].lower():
 
                     #Restuarant Name
+                
+                if amazonproducts:
                     try:
                         amazondatadict['productname']=amazonproducts[product].find("img",attrs={"class":"s-image"})['alt']
                     except:
@@ -123,27 +125,27 @@ def price():
                 #If exception occurs it will store empty
                 if flipkartproducts:
 
-                    if search.lower() in flipkartproducts[product].find("div",attrs={"class":"_3wU53n"}).text.strip().lower():
+#                     if search.lower() in flipkartproducts[product].find("div",attrs={"class":"_3wU53n"}).text.strip().lower():
 
-                        try:
-                            flipkartdatadict['productname']=flipkartproducts[product].find("div",attrs={"class":"_3wU53n"}).text.strip()
-                        except:
-                            flipkartdatadict['productname']=''
+                    try:
+                        flipkartdatadict['productname']=flipkartproducts[product].find("div",attrs={"class":"_3wU53n"}).text.strip()
+                    except:
+                        flipkartdatadict['productname']=''
 
-                        try:
-                            flipkartdatadict['producturl']=flipkartproducts[product].find("a",attrs={"class":"_31qSD5"},href=True)['href']
-                        except:
-                            flipkartdatadict['producturl']=''
+                    try:
+                        flipkartdatadict['producturl']=flipkartproducts[product].find("a",attrs={"class":"_31qSD5"},href=True)['href']
+                    except:
+                        flipkartdatadict['producturl']=''
 
-                        try:
-                            flipkartdatadict['productimg']=flipkartproducts[product].find("img",attrs={"class":"_1Nyybr"})['src']
-                        except:
-                            flipkartdatadict['productimg']=''
+                    try:
+                        flipkartdatadict['productimg']=flipkartproducts[product].find("img",attrs={"class":"_1Nyybr"})['src']
+                    except:
+                        flipkartdatadict['productimg']=''
 
-                        try:
-                            flipkartdatadict['productprice']=flipkartproducts[product].find("div",attrs={"class":"_1vC4OE"}).text.strip()
-                        except:
-                            flipkartdatadict['productprice']=''
+                    try:
+                        flipkartdatadict['productprice']=flipkartproducts[product].find("div",attrs={"class":"_1vC4OE"}).text.strip()
+                    except:
+                        flipkartdatadict['productprice']=''
 
                 flipkartdata.append(flipkartdatadict)
 
@@ -176,8 +178,8 @@ def price():
                 #Try except blocks
                 #Try block store the data
                 #If exception occurs it will store empty string
-
-                if search.lower() in snapdealproducts[product].find("p",attrs={"class":"product-title"}).text.strip().lower():
+                if snapdealproducts:
+#                 if search.lower() in snapdealproducts[product].find("p",attrs={"class":"product-title"}).text.strip().lower():
 
                     try:
                         snapdealdatadict['productname']=snapdealproducts[product].find("p",attrs={"class":"product-title"}).text.strip()
