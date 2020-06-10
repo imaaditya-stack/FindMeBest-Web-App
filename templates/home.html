@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="outer">
+    <div class="middle">
+        <div class="inner">
+            <div class="loader m-auto"></div><br>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+                <div class="text-uppercase font-weight-bold alert alert-{{ category }} alert-dismissible fade show mt-2" role="alert">
+                   {{ message }}
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                   </button>
+                </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <h1 style="color:#198D2A">FindMeBest <i class="fa fa-search" aria-hidden="true"></i></h1>
+            <p class="font-weight-bold">FindMeBest allows you to compare the prices of similar products online, offered by different brands and retailers. You can compare the prices of your desired products and pay the lowest price to buy them.</p>
+
+            <form action="/price" method="POST">
+                <input class="form-control mt-2 font-weight-bold" type="text" placeholder="Search for millions of products" name="inputsearch" required>
+                <input type="text" id="disabledTextInput" class="form-control font-weight-bold" placeholder="Example: Redmi Note 8 Pro, Lenovo Ideapad ... " disabled>
+                <br>
+                <button type="submit" class="btn btn-block text-uppercase font-weight-bold text-light" style="background-color:#198D2A;">Compare Price</button>
+                <br>
+            </form>
+            <p class="font-weight-bold">Developer: Aditya Ghag (Beta Version)</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

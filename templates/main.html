@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<p class="mt-4">Showing results from Amazon, Flipkart and Snapdeal</p>
+<br>
+
+<div class="products mb-4">
+    {% for product in amazon %}
+
+        {% if product %}
+        <a href="https://www.amazon.in{{ product.producturl}}">
+            <div class="card p-2" style="width: 25rem;">
+                <p style="color:#416AEA">Amazon</p>
+              <img src="{{ product.productimg }}" class="card-img-top m-auto" alt="Product image not availabe" style="width: 50%; height: 50%">
+              <div class="card-body">
+                <p class="card-title">{{ product.productname }}</p>
+                <p class="card-text">{{ product.productprice }}</p>
+              </div>
+            </div>
+        </a>
+        <br>
+        {% endif %}
+
+    {% endfor %}
+
+    {% for product in flipkart %}
+
+        {% if product %}
+        {% if product.productimg != "//img1a.flixcart.com/www/linchpin/fk-cp-zion/img/placeholder_9951d0.svg" %}
+        <a href="https://www.flipkart.com{{ product.producturl }}">
+        <div class="card p-2" style="width: 25rem;">
+          <p style="color:#FFC433">Flipkart</p>
+          <img src="{{ product.productimg }}" class="card-img-top img-fluid m-auto" alt="Product image not availabe" style="width: 50%; height: 50%">
+          <div class="card-body">
+            <p class="card-title">{{ product.productname }}</p>
+            <p class="card-text">{{ product.productprice }}</p>
+          </div>
+        </div>
+        </a>
+        <br>
+        {% endif %}
+        {% endif %}
+
+    {% endfor %}
+
+    {% for product in snapdeal %}
+
+        {% if product %}
+        {% if product.productimg %}
+        <a href="{{ product.producturl }}">
+        <div class="card p-2" style="width: 25rem;">
+        <p style="color:#FF334F">Snapdeal</p>
+          <img src="{{ product.productimg }}" class="card-img-top m-auto" alt="Product image not availabe" style="width: 50%; height: 50%">
+          <div class="card-body">
+            <p class="card-title">{{ product.productname }}</p>
+            <p class="card-text">{{ product.productprice }}</p>
+          </div>
+        </div>
+        </a>
+        <br>
+        {% endif %}
+        {% endif %}
+
+    {% endfor %}
+</div>
+{% endblock %}
