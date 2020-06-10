@@ -191,6 +191,4 @@ def price():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-# The resource was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+    
