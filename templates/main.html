@@ -27,7 +27,6 @@
     {% for product in flipkart %}
 
         {% if product %}
-        {% if product.productimg != "//img1a.flixcart.com/www/linchpin/fk-cp-zion/img/placeholder_9951d0.svg" %}
         <a href="https://www.flipkart.com{{ product.producturl }}">
         <div class="card p-2" style="width: 25rem;">
           <p style="color:#FFC433">Flipkart</p>
@@ -39,7 +38,6 @@
         </div>
         </a>
         <br>
-        {% endif %}
         {% endif %}
 
     {% endfor %}
