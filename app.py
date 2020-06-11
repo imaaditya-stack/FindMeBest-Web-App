@@ -40,10 +40,6 @@ def price():
 
         amazonproducts = amazonsoupobject.find_all("div",attrs={"class": "s-include-content-margin"})
 
-        if len(amazonproducts) < 1:
-            flash("Please enter a valid product","danger")
-            return redirect(url_for('home'))
-
         amazondata = []
 
         for product in range(5):
