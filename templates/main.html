@@ -15,7 +15,11 @@
               <img src="{{ product.productimg }}" class="card-img-top m-auto" alt="Product image not availabe" style="width: 50%; height: 50%">
               <div class="card-body">
                 <p class="card-title">{{ product.productname }}</p>
+                {% if product.productprice == "" %}
+                <p class="card-text">Product price not availble</p>
+                {% else %}
                 <p class="card-text">{{ product.productprice }}</p>
+                {% endif %}
               </div>
             </div>
         </a>
@@ -33,7 +37,11 @@
           <img src="{{ product.productimg }}" class="card-img-top img-fluid m-auto" alt="Product image not availabe" style="width: 50%; height: 50%">
           <div class="card-body">
             <p class="card-title">{{ product.productname }}</p>
+            {% if product.productprice == "" %}
+            <p class="card-text">Product price not availble</p>
+            {% else %}
             <p class="card-text">{{ product.productprice }}</p>
+            {% endif %}
           </div>
         </div>
         </a>
@@ -52,7 +60,11 @@
           <img src="{{ product.productimg }}" class="card-img-top m-auto" alt="Product image not availabe" style="width: 50%; height: 50%">
           <div class="card-body">
             <p class="card-title">{{ product.productname }}</p>
+            {% if product.productprice == "" %}
+            <p class="card-text">Product price not availble</p>
+            {% else %}
             <p class="card-text">{{ product.productprice }}</p>
+            {% endif %}
           </div>
         </div>
         </a>
