@@ -97,10 +97,6 @@ def price():
 
         flipkartproducts = flipkartsoupobject.find_all("div",attrs={"class": "_1UoZlX"})
 
-        if len(flipkartproducts) < 1:
-            flash("Please enter a valid product","danger")
-            return redirect(url_for('home'))
-
         flipkartdata = []
 
         for product in range(5):
@@ -149,10 +145,6 @@ def price():
         snapdealsoupobject = BeautifulSoup(snapdealcontent,"html.parser")
 
         snapdealproducts = snapdealsoupobject.find_all("div",attrs={"class": "product-tuple-listing"})
-
-        if len(snapdealproducts) < 1:
-            flash("Please enter a valid product","danger")
-            return redirect(url_for('home'))
 
         snapdealdata = []
 
